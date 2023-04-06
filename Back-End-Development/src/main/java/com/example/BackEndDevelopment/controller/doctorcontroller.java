@@ -29,15 +29,39 @@ public class doctorcontroller {
         return ResponseEntity.ok(doct);
     }
 
+    @PutMapping("/doctors/{id}/{column}/{data}")
+    public ResponseEntity<Doctor> updateDoctorColumn(@PathVariable long id, @PathVariable String column, @PathVariable String data) {
+        Doctor doctor = doc_repo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Doctor Does Not Exist with id: " + id));
+
+        switch (column.toLowerCase()) {
+            case "address":
+                doctor.setAddress(data);
+                break;
+            case "contactnumber":
+                doctor.setContactnumber(data);
+                break;
+            case "emailid":
+                doctor.setEmailID(data);
+                break;
+            case "experiences":
+                doctor.setExperience(data);
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid column: " + column);
+        }
+
+        Doctor updatedDoctor = doc_repo.save(doctor);
+        return ResponseEntity.ok(updatedDoctor);
+    }
+
     @PostMapping("/doctors/{id}/photo")
     public ResponseEntity<String> addPhotoToDoctor(@PathVariable long id, @RequestParam("file") MultipartFile file) throws IOException {
         try {
             Doctor doctor = doc_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Doctor Does Not Exist with id: " + id));
 
-            // Set the image byte array to the uploaded file content
             doctor.setImage(file.getBytes());
 
-            // Set the imageapi field with the id of the doctor
             doctor.setImageapi("http://localhost:8080/api/doctors/" + id + "/photo");
 
             // Save the doctor entity to update the image and imageapi fields in the database
@@ -61,8 +85,6 @@ public class doctorcontroller {
         headers.setContentLength(image.length);
 
         return new ResponseEntity<>(image, headers, HttpStatus.OK);
-
     }
-
 }
 

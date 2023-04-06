@@ -30,6 +30,9 @@ public class Doctor {
     @Column(name = "SLMC_Number")
     private String slmcnumber;
 
+    @Column(name = "Experience")
+    private String experience;
+
     @Column(name = "Image", columnDefinition = "longblob")
     private byte[] image;
 
@@ -38,8 +41,7 @@ public class Doctor {
 
     public Doctor() {}
 
-    public Doctor(String firstname, String lastname, String dob, String address, String contactnumber, String emailID, String slmcnumber, byte[] image) {
-
+    public Doctor(String firstname, String lastname, String dob, String address, String contactnumber, String emailID, String slmcnumber, String experience, byte[] image, String imageapi) {
         super();
         this.firstname = firstname;
         this.lastname = lastname;
@@ -48,6 +50,7 @@ public class Doctor {
         this.contactnumber = contactnumber;
         this.emailID = emailID;
         this.slmcnumber = slmcnumber;
+        this.experience = experience;
         this.image = image;
         this.imageapi = imageapi;
     }
@@ -124,4 +127,7 @@ public class Doctor {
 
     public void setImageapi(String imageapi) {this.imageapi = imageapi;}
 
+    public String getExperience() {return experience;}
+
+    public void setExperience(String experience) {this.experience = experience;}
 }
