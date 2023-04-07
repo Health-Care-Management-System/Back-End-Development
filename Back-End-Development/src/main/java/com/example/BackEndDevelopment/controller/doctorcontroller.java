@@ -23,9 +23,10 @@ public class doctorcontroller {
     @Autowired
     private Doctor_Repository doc_repo;
 
+
     @GetMapping("/doctors/{id}")
     public ResponseEntity<Doctor> getDoctorbyID(@PathVariable long id) {
-        Doctor doct = doc_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee Does Not Exist with id: " + id));
+        Doctor doct = doc_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Doctor Does Not Exist with id: " + id));
         return ResponseEntity.ok(doct);
     }
 
@@ -64,7 +65,6 @@ public class doctorcontroller {
 
             doctor.setImageapi("http://localhost:8080/api/doctors/" + id + "/photo");
 
-            // Save the doctor entity to update the image and imageapi fields in the database
             doc_repo.save(doctor);
 
             return ResponseEntity.ok("Photo added successfully to Doctor with ID: " + id);
