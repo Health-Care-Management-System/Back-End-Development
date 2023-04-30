@@ -1,6 +1,6 @@
 package com.example.BackEndDevelopment.service;
 
-import com.example.BackEndDevelopment.entity.Doctor;
+import com.example.BackEndDevelopment.entity.doctor.Doctor;
 import com.example.BackEndDevelopment.exception.ResourceNotFoundException;
 import com.example.BackEndDevelopment.repository.Doctor_Repository;
 import org.springframework.beans.factory.annotation.Autowired;

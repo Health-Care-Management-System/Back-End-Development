@@ -1,6 +1,6 @@
 package com.example.BackEndDevelopment.service;
 
-import com.example.BackEndDevelopment.entity.Patient;
+import com.example.BackEndDevelopment.entity.patient.Patient;
 import com.example.BackEndDevelopment.exception.ResourceNotFoundException;
 import com.example.BackEndDevelopment.repository.Patient_Repository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +32,9 @@ public class Patient_Service {
             case "address":
                 patient.setAddress(data);
                 break;
-            case "contactnumber":
-                patient.setContactnumber(data);
-                break;
+//            case "contactnumber":
+//                patient.setPhoneNumber(data);
+//                break;
             case "emailid":
                 patient.setEmailID(data);
                 break;

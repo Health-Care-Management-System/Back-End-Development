@@ -1,6 +1,6 @@
 package com.example.BackEndDevelopment.api;
 
-import com.example.BackEndDevelopment.entity.Patient;
+import com.example.BackEndDevelopment.entity.patient.Patient;
 import com.example.BackEndDevelopment.service.Patient_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
