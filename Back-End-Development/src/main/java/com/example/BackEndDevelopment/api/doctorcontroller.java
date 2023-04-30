@@ -1,6 +1,6 @@
 package com.example.BackEndDevelopment.api;
 
-import com.example.BackEndDevelopment.entity.Doctor;
+import com.example.BackEndDevelopment.entity.doctor.Doctor;
 import com.example.BackEndDevelopment.service.Doctor_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
