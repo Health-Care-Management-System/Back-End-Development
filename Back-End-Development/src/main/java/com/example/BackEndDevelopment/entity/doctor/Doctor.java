@@ -1,11 +1,10 @@
-package com.example.BackEndDevelopment.entity;
+package com.example.BackEndDevelopment.entity.doctor;
 
 import jakarta.persistence.*;
 
-
 @Entity
-@Table(name = "Patients")
-public class Patient {
+@Table(name = "Doctors")
+public class Doctor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,16 +27,21 @@ public class Patient {
     @Column(name = "Email")
     private String emailID;
 
+    @Column(name = "SLMC_Number")
+    private String slmcnumber;
+
+    @Column(name = "Experience")
+    private String experience;
+
     @Column(name = "Image", columnDefinition = "longblob")
     private byte[] image;
 
     @Column(name = "ImageAPI")
     private String imageapi;
 
+    public Doctor() {}
 
-    public Patient() {  }
-
-    public Patient(String firstname, String lastname, String dob, String address, String contactnumber, String emailID, byte[] image, String imageapi) {
+    public Doctor(String firstname, String lastname, String dob, String address, String contactnumber, String emailID, String slmcnumber, String experience, byte[] image, String imageapi) {
         super();
         this.firstname = firstname;
         this.lastname = lastname;
@@ -45,6 +49,8 @@ public class Patient {
         this.address = address;
         this.contactnumber = contactnumber;
         this.emailID = emailID;
+        this.slmcnumber = slmcnumber;
+        this.experience = experience;
         this.image = image;
         this.imageapi = imageapi;
     }
@@ -105,19 +111,23 @@ public class Patient {
         this.emailID = emailID;
     }
 
-    public byte[] getImage() {
-        return image;
+    public String getSlmcnumber() {
+        return slmcnumber;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setSlmcnumber(String slmcnumber) {
+        this.slmcnumber = slmcnumber;
     }
 
-    public String getImageapi() {
-        return imageapi;
-    }
+    public byte[] getImage() {return image;}
 
-    public void setImageapi(String imageapi) {
-        this.imageapi = imageapi;
-    }
+    public void setImage(byte[] image) {this.image = image;}
+
+    public String getImageapi() {return imageapi;}
+
+    public void setImageapi(String imageapi) {this.imageapi = imageapi;}
+
+    public String getExperience() {return experience;}
+
+    public void setExperience(String experience) {this.experience = experience;}
 }
