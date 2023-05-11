@@ -1,7 +1,9 @@
 package com.example.BackEndDevelopment.service;
 
 import com.example.BackEndDevelopment.entity.doctor.Doctor;
+import com.example.BackEndDevelopment.entity.hospital.Doctor_Invitation;
 import com.example.BackEndDevelopment.exception.ResourceNotFoundException;
+import com.example.BackEndDevelopment.repository.DoctorInvitation_Repository;
 import com.example.BackEndDevelopment.repository.Doctor_Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -13,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class Doctor_Service {
@@ -76,6 +80,23 @@ public class Doctor_Service {
         headers.setContentLength(image.length);
 
         return new ResponseEntity<>(image, headers, HttpStatus.OK);
+    }
+
+
+   ///////////////////doctor invitation methods///////////////////////////
+    @Autowired
+    private DoctorInvitation_Repository doctor_invitation_repo;
+
+    public void saveDoctor(Doctor doctor){
+        doc_repo.save(doctor);
+    }
+    public List<Doctor_Invitation> getDoctorInvitations(String email){
+        Optional<Doctor> doctor  = doc_repo.findByEmail(email);
+        if (!doctor.isPresent()){
+            throw new RuntimeException("Doctor not found!");
+        }
+        Long doctorId = doctor.get().getId();
+        return doctor_invitation_repo.findByIdDoctorId(doctorId);
     }
 
 }

@@ -9,9 +9,10 @@ public class Hospital {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long hospitalid;
 
-//    @ManyToOne
-//    @JoinColumn(name = "hospitalowner_id", referencedColumnName = "hospitaowwnerid")
-//    private HospitalOwner hospitalOwner;
+  //  @OneToMany        // - hosptial can have only one Owner and Owner can have many hospitals
+   @ManyToOne
+    @JoinColumn(name = "hospitalowner_id", referencedColumnName = "hospitaowwnerid")
+    private HospitalOwner hospitalOwner;
 
     private String name;
     private String registrationnumber;
@@ -21,10 +22,9 @@ public class Hospital {
     private String street;
     private String district;
 
-
-
-    public Hospital(String name, String registrationnumber, String email, String phonenumber, String city, String street, String district) {
+    public Hospital(HospitalOwner hospitalOwner, String name, String registrationnumber, String email, String phonenumber, String city, String street, String district) {
         super();
+        this.hospitalOwner = hospitalOwner;
         this.name = name;
         this.registrationnumber = registrationnumber;
         this.email = email;
@@ -32,7 +32,6 @@ public class Hospital {
         this.city = city;
         this.street = street;
         this.district = district;
-//        this.hospitalOwner = hospitalOwner;
     }
 
     public Hospital() {
@@ -103,11 +102,11 @@ public class Hospital {
         this.district = district;
     }
 
-//    public HospitalOwner getHospitalOwner() {
-//        return hospitalOwner;
-//    }
-//
-//    public void setHospitalOwner(HospitalOwner hospitalOwner) {
-//        this.hospitalOwner = hospitalOwner;
-//    }
+    public HospitalOwner getHospitalOwner() {
+        return hospitalOwner;
+    }
+
+    public void setHospitalOwner(HospitalOwner hospitalOwner) {
+        this.hospitalOwner = hospitalOwner;
+    }
 }

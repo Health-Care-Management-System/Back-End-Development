@@ -1,11 +1,17 @@
 package com.example.BackEndDevelopment.entity.hospital;
 import com.example.BackEndDevelopment.entity.doctor.Doctor;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table
-public class Doctor_Invitation {
+@Table(name = "DoctorInvitation")
 
+public class Doctor_Invitation {
     @EmbeddedId
     private HospitalDoctorId id;
 
@@ -16,19 +22,9 @@ public class Doctor_Invitation {
     @ManyToOne
     @JoinColumn(name = "doctor_id", insertable = false, updatable = false)
     private Doctor doctor;
+
     private String description;
-
-    public HospitalDoctorId getId() {
-        return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    private  String Status;
 
 }
 
