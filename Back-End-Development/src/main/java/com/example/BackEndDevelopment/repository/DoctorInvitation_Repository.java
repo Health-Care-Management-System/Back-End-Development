@@ -1,12 +1,11 @@
 package com.example.BackEndDevelopment.repository;
 
 import com.example.BackEndDevelopment.entity.hospital.Doctor_Invitation;
-import com.example.BackEndDevelopment.entity.hospital.HospitalDoctorId;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
-public interface DoctorInvitation_Repository extends JpaRepository<Doctor_Invitation , HospitalDoctorId> {
-    List<Doctor_Invitation> findByIdDoctorId(Long doctorId);
-    List<Doctor_Invitation> findByIdHospitalId(Long hospitalId);
+@Repository
+public interface DoctorInvitation_Repository extends CrudRepository< Doctor_Invitation , Integer> {
+
 }

@@ -10,7 +10,7 @@ public class Hospital {
     private long hospitalid;
 
   //  @OneToMany        // - hosptial can have only one Owner and Owner can have many hospitals
-   @ManyToOne
+   @OneToOne
     @JoinColumn(name = "hospitalowner_id", referencedColumnName = "hospitaowwnerid")
     private HospitalOwner hospitalOwner;
 

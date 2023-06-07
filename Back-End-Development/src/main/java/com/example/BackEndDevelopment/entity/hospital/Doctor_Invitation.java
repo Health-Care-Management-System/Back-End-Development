@@ -1,30 +1,50 @@
 package com.example.BackEndDevelopment.entity.hospital;
 import com.example.BackEndDevelopment.entity.doctor.Doctor;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "DoctorInvitation")
 
 public class Doctor_Invitation {
-    @EmbeddedId
-    private HospitalDoctorId id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer invitationId;
 
-    @ManyToOne
-    @JoinColumn(name = "hospital_id", insertable = false, updatable = false)
+    @OneToOne
     private Hospital hospital;
 
-    @ManyToOne
-    @JoinColumn(name = "doctor_id", insertable = false, updatable = false)
+    @OneToOne
     private Doctor doctor;
 
-    private String description;
-    private  String Status;
 
+    //id will provide spring itself and so no need to provide it into constructor
+    public Doctor_Invitation(Hospital hospital, Doctor doctor) {
+        this.hospital = hospital;
+        this.doctor = doctor;
+    }
+
+    public Integer getInvitationId() {
+        return invitationId;
+    }
+
+    public void setInvitationId(Integer invitationId) {
+        this.invitationId = invitationId;
+    }
+
+    public Hospital getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 }
 
