@@ -1,10 +1,14 @@
-package com.example.BackEndDevelopment.models;
+package com.example.BackEndDevelopment.entity.patient;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
+
 @Entity
-@Table(name = "Doctors")
-public class Doctor {
+@Table(name = "Patients")
+public class Patient {
 
     @Id
     private String id;
@@ -20,17 +24,12 @@ public class Doctor {
     @Column(name = "Address")
     private String address;
 
+    @OneToMany(mappedBy = "patient",cascade = CascadeType.ALL,orphanRemoval = true)
     @Column(name = "Contact_Number")
-    private String contactnumber;
+    private Set<PatientPhoneNumber> phoneNumber = new HashSet<>();
 
     @Column(name = "Email")
     private String emailID;
-
-    @Column(name = "SLMC_Number")
-    private String slmcnumber;
-
-    @Column(name = "Experience")
-    private String experience;
 
     @Column(name = "Image", columnDefinition = "longblob")
     private byte[] image;
@@ -39,21 +38,18 @@ public class Doctor {
     private String imageapi;
 
 
+    public Patient() {  }
 
-    public Doctor(String id, String firstname, String lastname, String dob, String address, String contactnumber, String emailID, String slmcnumber, String experience, byte[] image, String imageapi) {
+    public Patient(String id, String firstname, String lastname, String dob, String address, Set<PatientPhoneNumber> phoneNumber, String emailID, byte[] image, String imageapi) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.dob = dob;
         this.address = address;
-        this.contactnumber = contactnumber;
+        this.phoneNumber = phoneNumber;
         this.emailID = emailID;
-        this.slmcnumber = slmcnumber;
-    }
-
-
-    public Doctor() {
-
+        this.image = image;
+        this.imageapi = imageapi;
     }
 
     public String getId() {
@@ -96,12 +92,12 @@ public class Doctor {
         this.address = address;
     }
 
-    public String getContactnumber() {
-        return contactnumber;
+    public Set<PatientPhoneNumber> getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setContactnumber(String contactnumber) {
-        this.contactnumber = contactnumber;
+    public void setPhoneNumber(Set<PatientPhoneNumber> phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmailID() {
@@ -112,12 +108,19 @@ public class Doctor {
         this.emailID = emailID;
     }
 
-    public String getSlmcnumber() {
-        return slmcnumber;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setSlmcnumber(String slmcnumber) {
-        this.slmcnumber = slmcnumber;
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
+    public String getImageapi() {
+        return imageapi;
+    }
+
+    public void setImageapi(String imageapi) {
+        this.imageapi = imageapi;
+    }
 }
