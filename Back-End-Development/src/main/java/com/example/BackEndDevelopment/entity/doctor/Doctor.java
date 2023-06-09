@@ -1,4 +1,4 @@
-package com.example.BackEndDevelopment.models;
+package com.example.BackEndDevelopment.entity.doctor;
 
 import jakarta.persistence.*;
 
@@ -49,6 +49,9 @@ public class Doctor {
         this.contactnumber = contactnumber;
         this.emailID = emailID;
         this.slmcnumber = slmcnumber;
+        this.experience = experience;
+        this.image = image;
+        this.imageapi = imageapi;
     }
 
 
@@ -120,4 +123,27 @@ public class Doctor {
         this.slmcnumber = slmcnumber;
     }
 
+    public String getExperience() {
+        return experience;
+    }
+
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getImageapi() {
+        return imageapi;
+    }
+
+    public void setImageapi(String imageapi) {
+        this.imageapi = imageapi;
+    }
 }
