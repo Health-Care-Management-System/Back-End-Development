@@ -45,12 +45,13 @@ public class PharmacyController {
         Optional<Pharmacy> record = pharmacyservice1.findById(id);
         if (record.isPresent()) {
             Pharmacy existingRecord = record.get();
-            existingRecord.setName(updatedRecord.getName());
-            existingRecord.setCity(updatedRecord.getCity());
-            existingRecord.setDistrict(updatedRecord.getDistrict());
-            existingRecord.setHospital(updatedRecord.getHospital());
-
-            existingRecord.setpImage(updatedRecord.getpImage());
+//            existingRecord.setName(updatedRecord.getName());
+//            existingRecord.setCity(updatedRecord.getCity());
+//            existingRecord.setDistrict(updatedRecord.getDistrict());
+//            existingRecord.setHospital(updatedRecord.getHospital());
+//
+//            existingRecord.setpImage(updatedRecord.getpImage());
+            existingRecord.setFavorite(updatedRecord.isFavorite());
             Pharmacy savedRecord = pharmacyservice1.addBLMethod(existingRecord);
             return ResponseEntity.ok(savedRecord);
         } else {

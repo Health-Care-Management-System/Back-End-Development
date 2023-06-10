@@ -49,12 +49,7 @@ public class HospitalController {
         Optional<Hospital> record = hospitalServices1.findById(id);
         if (record.isPresent()) {
             Hospital existingRecord = record.get();
-            existingRecord.setName(updatedRecord.getName());
-            existingRecord.setCity(updatedRecord.getCity());
-            existingRecord.setDistrict(updatedRecord.getDistrict());
-            existingRecord.setHospital(updatedRecord.getHospital());
-
-            existingRecord.sethImage(updatedRecord.gethImage());
+            existingRecord.setFavorite(updatedRecord.isFavorite());
             Hospital savedRecord = hospitalServices1.addBLMethod(existingRecord);
             return ResponseEntity.ok(savedRecord);
         } else {

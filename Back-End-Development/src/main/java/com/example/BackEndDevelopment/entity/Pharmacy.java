@@ -10,6 +10,7 @@ public class Pharmacy {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    private boolean isFavorite;
     private String name;
     private String city;
     private String district;
@@ -38,6 +39,14 @@ public class Pharmacy {
 
     public String getCity() {
         return city;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 
     public void setCity(String city) {

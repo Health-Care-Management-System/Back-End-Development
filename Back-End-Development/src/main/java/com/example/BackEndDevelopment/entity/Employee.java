@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy =GenerationType.AUTO)
 //    @Column(name = "empId", nullable = false)
     private Integer empId;
     //    @Column(name = "empName", nullable = false)

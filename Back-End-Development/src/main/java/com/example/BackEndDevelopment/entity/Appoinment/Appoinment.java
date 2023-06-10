@@ -21,12 +21,20 @@ public class Appoinment {
     private String DoctorSpeciality;
 
     private LocalTime bookingTime;
-
+    private String phone;
     public Appoinment() {
     }
 
     public String getDoctorName() {
         return DoctorName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public void setDoctorName(String doctorName) {
