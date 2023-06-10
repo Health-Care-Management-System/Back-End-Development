@@ -44,20 +44,15 @@ public class searchcontroller {
         Optional<searchdemo> record = searchservice1.findById(id);
         if (record.isPresent()) {
             searchdemo existingRecord = record.get();
-            existingRecord.setName(updatedRecord.getName());
-            existingRecord.setCity(updatedRecord.getCity());
-            existingRecord.setDistrict(updatedRecord.getDistrict());
-            existingRecord.setHospital(updatedRecord.getHospital());
-            existingRecord.setSpciality(updatedRecord.getSpciality());
-            existingRecord.setEmpImage(updatedRecord.getEmpImage());
+
+            existingRecord.setFavorite(updatedRecord.isFavorite()); // Update the isFavorite status
+
             searchdemo savedRecord = searchservice1.addBLMethod(existingRecord);
             return ResponseEntity.ok(savedRecord);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
-
-
 
 
     @DeleteMapping("/delete/{id}")

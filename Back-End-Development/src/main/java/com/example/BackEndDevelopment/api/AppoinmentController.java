@@ -51,8 +51,11 @@ public class AppoinmentController {
         Optional<Appoinment> record = appoinmentService.findById(id);
         if (record.isPresent()) {
             Appoinment existingRecord = record.get();
+            existingRecord.setId(updatedRecord.getId());
             existingRecord.setBookingDate(updatedRecord.getBookingDate());
             existingRecord.setBookingTime(updatedRecord.getBookingTime());
+            existingRecord.setSearchText(updatedRecord.getSearchText());
+            existingRecord.setPhone(updatedRecord.getPhone());
 
 
 

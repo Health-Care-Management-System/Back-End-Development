@@ -13,6 +13,7 @@ public class searchdemo {
     private Integer id;
     @Column(unique = true)
     private String name;
+    private boolean isFavorite;
     private String city;
     private String district;
     private String hospital;
@@ -27,6 +28,7 @@ public class searchdemo {
 //    @JoinTable(name ="doctorhospital",
 //            joinColumns = {@JoinColumn(name="doctor_fk")},
 //            inverseJoinColumns = {@JoinColumn(name="hospital_fk")})
+//@ManyToMany(mappedBy = "searchdemos")
 //    private Set<Hospital> hospitals=new HashSet<>();
 //
 //    public Set<Hospital> getHospitals() {
@@ -71,6 +73,14 @@ public class searchdemo {
 
     public String getHospital() {
         return hospital;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 
     public void setHospital(String hospital) {

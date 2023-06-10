@@ -2,28 +2,17 @@ package com.example.BackEndDevelopment.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
 @Entity
-public class Favorite {   @Id
+public class FavoritePharmacy {  @Id
 
 private Integer id;
+    private boolean isFavorite;
     private String name;
     private String city;
     private String district;
     private String hospital;
-    private String spciality;
-    private String empImage;
-    private Boolean isFavorite;
-    public Favorite() {
-    }
-
-    public Boolean getIsFavorite() {
-        return isFavorite;
-    }
-
-    public void setIsFavorite(Boolean favorite) {
-        isFavorite = favorite;
-    }
+    private String contactNum;
+    private String pImage;
 
     public Integer getId() {
         return id;
@@ -31,6 +20,14 @@ private Integer id;
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public boolean getIsFavorite() {
+        return isFavorite;
+    }
+
+    public void setIsFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 
     public String getName() {
@@ -65,19 +62,22 @@ private Integer id;
         this.hospital = hospital;
     }
 
-    public String getSpciality() {
-        return spciality;
+    public String getContactNum() {
+        return contactNum;
     }
 
-    public void setSpciality(String spciality) {
-        this.spciality = spciality;
+    public void setContactNum(String contactNum) {
+        this.contactNum = contactNum;
     }
 
-    public String getEmpImage() {
-        return empImage;
+    public String getpImage() {
+        return pImage;
     }
 
-    public void setEmpImage(String empImage) {
-        this.empImage = empImage;
+    public void setpImage(String pImage) {
+        this.pImage = pImage;
+    }
+
+    public FavoritePharmacy() {
     }
 }

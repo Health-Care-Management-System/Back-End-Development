@@ -1,7 +1,7 @@
 package com.example.BackEndDevelopment.api;
 
-import com.example.BackEndDevelopment.entity.Favorite;
-import com.example.BackEndDevelopment.service.FavoriteService;
+import com.example.BackEndDevelopment.entity.FavoritePharmacy;
+import com.example.BackEndDevelopment.service.FavoritePharmacyService;
 import com.example.BackEndDevelopment.service.searchservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,25 +12,25 @@ import java.util.Optional;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/apifavorite")
-public class FavoriteController {
-    @Autowired
-    private FavoriteService favoriteService;
+@RequestMapping("/apipharmacyfavorite")
+
+public class FavoritePharmacyController { @Autowired
+private FavoritePharmacyService favoritePharmacyService;
     @Autowired
     private searchservice searchservice1;
 
     @PostMapping(value = "/add")
-    public ResponseEntity<String> addOrUpdateRecord(@RequestBody Favorite favorite) {
-        favorite.setIsFavorite(true); // Set isFavorite to true
-        favoriteService.addBLMethod(favorite);
+    public ResponseEntity<String> addOrUpdateRecord(@RequestBody FavoritePharmacy favoritePharmacy) {
+        favoritePharmacy.setIsFavorite(true); // Set isFavorite to true
+        favoritePharmacyService.addBLMethod(favoritePharmacy);
         return new ResponseEntity<>("data saved successfully.", HttpStatus.OK);
     }
 
 
 
     @GetMapping("/all")
-    public Iterable<Favorite> findAllRecord(){
-        return favoriteService.findAll ();
+    public Iterable<FavoritePharmacy> findAllRecord(){
+        return favoritePharmacyService.findAll ();
     }
 
 
@@ -39,8 +39,8 @@ public class FavoriteController {
 //       return searchservice1.findById(id);
 //  }
     @GetMapping("/{id}")
-    public ResponseEntity<Favorite> findById(@PathVariable Integer id) {
-        Optional<Favorite> record = favoriteService.findById(id);
+    public ResponseEntity<FavoritePharmacy> findById(@PathVariable Integer id) {
+        Optional<FavoritePharmacy> record = favoritePharmacyService.findById(id);
         if (record.isPresent()) {
             return ResponseEntity.ok(record.get());
         } else {
@@ -49,15 +49,15 @@ public class FavoriteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Favorite> updateById(@PathVariable Integer id, @RequestBody Favorite updatedRecord) {
-        Optional<Favorite> record = favoriteService.findById(id);
+    public ResponseEntity<FavoritePharmacy> updateById(@PathVariable Integer id, @RequestBody FavoritePharmacy updatedRecord) {
+        Optional<FavoritePharmacy> record = favoritePharmacyService.findById(id);
         if (record.isPresent()) {
-            Favorite existingRecord = record.get();
+            FavoritePharmacy existingRecord = record.get();
 
 
 
 
-            Favorite savedRecord = favoriteService.addBLMethod(existingRecord);
+            FavoritePharmacy savedRecord = favoritePharmacyService.addBLMethod(existingRecord);
             return ResponseEntity.ok(savedRecord);
         } else {
             return ResponseEntity.notFound().build();
@@ -69,20 +69,14 @@ public class FavoriteController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> removeById(@PathVariable Integer id ){
-        Optional<Favorite> record = favoriteService.findById(id);
+        Optional<FavoritePharmacy> record = favoritePharmacyService.findById(id);
         if (record.isPresent()) {
-            favoriteService.delete(record.get());
+            favoritePharmacyService.delete(record.get());
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
         }
     }}
-
-
-
-
-
-
 
 
 

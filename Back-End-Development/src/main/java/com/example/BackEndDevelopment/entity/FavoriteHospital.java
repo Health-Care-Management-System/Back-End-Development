@@ -1,16 +1,11 @@
 package com.example.BackEndDevelopment.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-
-import java.util.HashSet;
-import java.util.Set;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 @Entity
-public class Hospital {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+public class FavoriteHospital { @Id
+
+private Integer id;
     private boolean isFavorite;
     private String name;
     private String city;
@@ -18,26 +13,6 @@ public class Hospital {
     private String hospital;
     private String contactNum;
     private String hImage;
-
-
-    public Hospital() {
-    }
-//    @JsonIgnore
-//    @ManyToMany(cascade=CascadeType.ALL,mappedBy="hospitals")
-
-//@ManyToMany(cascade = CascadeType.ALL)
-//@JoinTable(name = "hospital_searchdemo",
-//        joinColumns = @JoinColumn(name = "hospital_id"),
-//        inverseJoinColumns = @JoinColumn(name = "searchdemo_id"))
-//    private Set<searchdemo> searchdemos=new HashSet<>();
-//
-//    public Set<searchdemo> getSearchdemos() {
-//        return searchdemos;
-//    }
-//
-//    public void setSearchdemos(Set<searchdemo> searchdemos) {
-//        this.searchdemos = searchdemos;
-//    }
 
     public Integer getId() {
         return id;
@@ -47,16 +22,16 @@ public class Hospital {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public boolean isFavorite() {
+    public boolean getIsFavorite() {
         return isFavorite;
     }
 
-    public void setFavorite(boolean favorite) {
+    public void setIsFavorite(boolean favorite) {
         isFavorite = favorite;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
@@ -101,5 +76,8 @@ public class Hospital {
 
     public void sethImage(String hImage) {
         this.hImage = hImage;
+    }
+
+    public FavoriteHospital() {
     }
 }
