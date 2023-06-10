@@ -1,10 +1,8 @@
 package com.example.BackEndDevelopment.entity.patient;
 
 import jakarta.persistence.*;
-
 import java.util.HashSet;
 import java.util.Set;
-
 
 @Entity
 @Table(name = "Patients")

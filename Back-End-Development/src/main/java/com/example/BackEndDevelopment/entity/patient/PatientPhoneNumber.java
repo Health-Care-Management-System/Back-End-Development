@@ -7,8 +7,7 @@ import jakarta.persistence.*;
 public class PatientPhoneNumber {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long phone_id;
+    private String phone_id;
 
     private String phonenumber;
 
@@ -26,11 +25,11 @@ public class PatientPhoneNumber {
 
     }
 
-    public long getPhone_id() {
+    public String getPhone_id() {
         return phone_id;
     }
 
-    public void setPhone_id(long phone_id) {
+    public void setPhone_id(String phone_id) {
         this.phone_id = phone_id;
     }
 

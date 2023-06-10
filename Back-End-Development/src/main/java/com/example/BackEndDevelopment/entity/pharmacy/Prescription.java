@@ -22,6 +22,10 @@ public class Prescription {
     @JoinColumn(name="patient_id",referencedColumnName = "id")
     private Patient patient;
 
+    @ManyToOne
+    @JoinColumn(name="pharmacy_id",referencedColumnName = "pharmacyid")
+    private Pharmacy pharmacy;
+
     private LocalDate date;
     private LocalTime time;
 
@@ -29,10 +33,11 @@ public class Prescription {
 
     private String response_state;
 
-    public Prescription(String prescriptionid, Doctor doctor, Patient patient, LocalDate date, LocalTime time, String description, String response_state) {
+    public Prescription(String prescriptionid, Doctor doctor, Patient patient, Pharmacy pharmacy, LocalDate date, LocalTime time, String description, String response_state) {
         this.prescriptionid = prescriptionid;
         this.doctor = doctor;
         this.patient = patient;
+        this.pharmacy= pharmacy;
         this.date = date;
         this.time = time;
         this.description = description;
@@ -66,6 +71,14 @@ public class Prescription {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+    }
+
+    public Pharmacy getPharmacy() {
+        return pharmacy;
+    }
+
+    public void setPharmacy(Pharmacy pharmacy) {
+        this.pharmacy = pharmacy;
     }
 
     public LocalDate getDate() {

@@ -32,9 +32,6 @@ public class Patient_Service {
             case "address":
                 patient.setAddress(data);
                 break;
-//            case "contactnumber":
-//                patient.setPhoneNumber(data);
-//                break;
             case "emailid":
                 patient.setEmailID(data);
                 break;
