@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class Doctor_Service {
@@ -20,14 +21,18 @@ public class Doctor_Service {
     @Autowired
     private Doctor_Repository doc_repo;
 
-    public ResponseEntity<Doctor> getDoctorbyID(long id){
-        Doctor doct = doc_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Doctor Does Not Exist with id: " + id));
+    public ResponseEntity<Doctor> getDoctorbyID(String doc_id){
+        Doctor doct = doc_repo.findById(doc_id).orElseThrow(() -> new ResourceNotFoundException("Doctor Does Not Exist with id: " + doc_id));
         return ResponseEntity.ok(doct);
     }
 
-    public ResponseEntity<Doctor> updateDoctorColumn(long id,String column,String data) {
-        Doctor doctor = doc_repo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Doctor Does Not Exist with id: " + id));
+    public List<Doctor> getAllDoctors(){
+        return (List<Doctor>) doc_repo.findAll();
+    }
+
+    public ResponseEntity<Doctor> updateDoctorColumn(String doc_id,String column,String data) {
+        Doctor doctor = doc_repo.findById(doc_id)
+                .orElseThrow(() -> new ResourceNotFoundException("Doctor Does Not Exist with id: " + doc_id));
 
         switch (column.toLowerCase()) {
             case "address":
@@ -50,24 +55,24 @@ public class Doctor_Service {
         return ResponseEntity.ok(updatedDoctor);
     }
 
-    public ResponseEntity<String> addPhotoToDoctor(long id,MultipartFile file) throws IOException {
+    public ResponseEntity<String> addPhotoToDoctor(String doc_id,MultipartFile file) throws IOException {
         try {
-            Doctor doctor = doc_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Doctor Does Not Exist with id: " + id));
+            Doctor doctor = doc_repo.findById(doc_id).orElseThrow(() -> new ResourceNotFoundException("Doctor Does Not Exist with id: " + doc_id));
 
             doctor.setImage(file.getBytes());
 
-            doctor.setImageapi("http://localhost:8080/api/doctors/" + id + "/photo");
+            doctor.setImageapi("http://localhost:8080/api/doctors/" + doc_id + "/photo");
 
             doc_repo.save(doctor);
 
-            return ResponseEntity.ok("Photo added successfully to Doctor with ID: " + id);
+            return ResponseEntity.ok("Photo added successfully to Doctor with ID: " + doc_id);
         } catch (DataIntegrityViolationException ex) {
             return ResponseEntity.badRequest().body("Error: Data Integrity Violation occurred. Please check your input.");
         }
     }
 
-    public ResponseEntity<byte[]> getDoctorPhoto(long id) {
-        Doctor doctor = doc_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Doctor Does Not Exist with id: " + id));
+    public ResponseEntity<byte[]> getDoctorPhoto(String doc_id) {
+        Doctor doctor = doc_repo.findById(doc_id).orElseThrow(() -> new ResourceNotFoundException("Doctor Does Not Exist with id: " + doc_id));
 
         byte[] image = doctor.getImage();
 

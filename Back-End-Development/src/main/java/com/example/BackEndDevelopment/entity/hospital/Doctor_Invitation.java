@@ -23,6 +23,10 @@ public class Doctor_Invitation {
         this.doctor = doctor;
     }
 
+    public Doctor_Invitation() {
+
+    }
+
     public Integer getInvitationId() {
         return invitationId;
     }

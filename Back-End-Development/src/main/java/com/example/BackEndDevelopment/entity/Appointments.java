@@ -1,6 +1,7 @@
 package com.example.BackEndDevelopment.entity;
 
 import com.example.BackEndDevelopment.entity.doctor.Doctor;
+import com.example.BackEndDevelopment.entity.hospital.Hospital;
 import com.example.BackEndDevelopment.entity.patient.Patient;
 import jakarta.persistence.*;
 
@@ -20,15 +21,21 @@ public class Appointments {
     private Patient patient_id;
 
     @ManyToOne
-    @JoinColumn(name="doctor_id",referencedColumnName = "id")
+    @JoinColumn(name="doctor_id",referencedColumnName = "doc_id")
     private Doctor doctor;
+
+    @OneToOne
+    @JoinColumn(name = "hospital_id" , referencedColumnName = "hospitalid")
+    private Hospital hospital;
     private LocalDate data;
     private LocalTime time;
 
-    public Appointments(Patient patient_id, Doctor doctor, LocalDate data, LocalTime time) {
+
+    public Appointments(Patient patient_id, Doctor doctor, Hospital hospital, LocalDate data, LocalTime time) {
         super();
         this.patient_id = patient_id;
         this.doctor = doctor;
+        this.hospital = hospital;
         this.data = data;
         this.time = time;
     }
@@ -59,6 +66,14 @@ public class Appointments {
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
+    }
+
+    public Hospital getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
     }
 
     public LocalDate getData() {

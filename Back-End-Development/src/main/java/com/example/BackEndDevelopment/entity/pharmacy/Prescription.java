@@ -16,7 +16,7 @@ public class Prescription {
     private long prescriptionid;
 
     @OneToOne
-    @JoinColumn(name="doctor_id",referencedColumnName = "id")
+    @JoinColumn(name="doctor_id",referencedColumnName = "doc_id")
     private Doctor doctor;
 
     @OneToOne

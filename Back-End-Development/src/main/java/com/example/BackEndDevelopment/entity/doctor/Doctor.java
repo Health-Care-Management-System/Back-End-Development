@@ -7,8 +7,7 @@ import jakarta.persistence.*;
 public class Doctor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private String doc_id;
 
     @Column(name = "First_Name")
     private String firstname;
@@ -41,8 +40,8 @@ public class Doctor {
 
     public Doctor() {}
 
-    public Doctor(String firstname, String lastname, String dob, String address, String contactnumber, String emailID, String slmcnumber, String experience, byte[] image, String imageapi) {
-        super();
+    public Doctor(String doc_id, String firstname, String lastname, String dob, String address, String contactnumber, String emailID, String slmcnumber, String experience, byte[] image, String imageapi) {
+        this.doc_id = doc_id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.dob = dob;
@@ -55,12 +54,12 @@ public class Doctor {
         this.imageapi = imageapi;
     }
 
-    public long getId() {
-        return id;
+    public String getDoc_id() {
+        return doc_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setDoc_id(String doc_id) {
+        this.doc_id = doc_id;
     }
 
     public String getFirstname() {
@@ -119,15 +118,27 @@ public class Doctor {
         this.slmcnumber = slmcnumber;
     }
 
-    public byte[] getImage() {return image;}
+    public String getExperience() {
+        return experience;
+    }
 
-    public void setImage(byte[] image) {this.image = image;}
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
 
-    public String getImageapi() {return imageapi;}
+    public byte[] getImage() {
+        return image;
+    }
 
-    public void setImageapi(String imageapi) {this.imageapi = imageapi;}
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 
-    public String getExperience() {return experience;}
+    public String getImageapi() {
+        return imageapi;
+    }
 
-    public void setExperience(String experience) {this.experience = experience;}
+    public void setImageapi(String imageapi) {
+        this.imageapi = imageapi;
+    }
 }

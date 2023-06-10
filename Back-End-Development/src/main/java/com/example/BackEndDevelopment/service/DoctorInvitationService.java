@@ -9,6 +9,8 @@ import com.example.BackEndDevelopment.repository.Hospital_Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DoctorInvitationService {
 
@@ -21,13 +23,13 @@ public class DoctorInvitationService {
     @Autowired
     private Hospital_Repository hospitalRepository;
 
-    public Doctor_Invitation addToInvitationList(Long doctorId){
+    public Doctor_Invitation addToInvitationList(String doctorId){
         Doctor doctor = doctorRepository.findById(doctorId).get();
-       // String hospitalName = JwtRequestFilter.CURRENT_USER;
+       // String hospitalid = JwtRequestFilter.CURRENT_USER;
 
         Hospital hospital = null;
-//        if (hospitalName != null){
-//            Hospital hospital = hospitalRepository.findById(hospitalName).get();
+//        if (hospitalid != null){
+//            Hospital hospital = hospitalRepository.findById(hospitalid).get();
 //        }
 
         if (doctor != null && hospital!=null){
@@ -35,5 +37,12 @@ public class DoctorInvitationService {
             return doctorInvitationRepository.save(doctor_invitation);
         }
         return null;
+    }
+
+    public List<Doctor_Invitation> getInvitationDetails(){
+        //String doc_id = JwtRequestFilter.CURRENT_USER;
+       // Doctor doctor = DoctorRepository.findById(doc_id).get();
+        Doctor doctor = null;
+        return doctorInvitationRepository.findByDoctor(doctor);
     }
 }

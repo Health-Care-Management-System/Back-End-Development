@@ -3,12 +3,12 @@ package com.example.BackEndDevelopment.entity.hospital;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "hospitalowner")
+@Table(name = "hospitalOwner")
 public class HospitalOwner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long hospitaowwnerid;
+    private long hospitalOwnerId;
     private String firstname;
     private String lastname;
     private  String nic;
@@ -34,12 +34,12 @@ public class HospitalOwner {
 
     }
 
-    public long getHospitaowwnerid() {
-        return hospitaowwnerid;
+    public long getHospitalOwnerId() {
+        return hospitalOwnerId;
     }
 
-    public void setHospitaowwnerid(long hospitaowwnerid) {
-        this.hospitaowwnerid = hospitaowwnerid;
+    public void setHospitalOwnerId(long hospitalOwnerId) {
+        this.hospitalOwnerId = hospitalOwnerId;
     }
 
     public String getFirstname() {
