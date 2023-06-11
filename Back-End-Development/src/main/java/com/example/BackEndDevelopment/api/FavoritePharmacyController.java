@@ -14,7 +14,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/apipharmacyfavorite")
 
-public class FavoritePharmacyController { @Autowired
+public class FavoritePharmacyController {
+    @Autowired
 private FavoritePharmacyService favoritePharmacyService;
     @Autowired
     private searchservice searchservice1;
