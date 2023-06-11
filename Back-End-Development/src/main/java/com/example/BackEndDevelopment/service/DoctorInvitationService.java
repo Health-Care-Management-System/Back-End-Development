@@ -42,7 +42,10 @@ public class DoctorInvitationService {
     public List<Doctor_Invitation> getInvitationDetails(){
         //String doc_id = JwtRequestFilter.CURRENT_USER;
        // Doctor doctor = DoctorRepository.findById(doc_id).get();
-        Doctor doctor = null;
+        //Doctor doctor = null;
+
+        String doc_id ="doc1";
+        Doctor doctor = doctorRepository.findById(doc_id).get();
         return doctorInvitationRepository.findByDoctor(doctor);
     }
 }

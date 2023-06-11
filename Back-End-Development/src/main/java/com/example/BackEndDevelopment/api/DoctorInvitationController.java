@@ -18,12 +18,13 @@ public class DoctorInvitationController {
 
     //@PreAuthorize("hasRole(User)")
     @GetMapping({"/addToInvitationList/{id}"})
-    public Doctor_Invitation addToInvitationList(@PathVariable(name = "id") String doctorId){
-        return doctorInvitationService.addToInvitationList(doctorId);
+    public Doctor_Invitation addToInvitationList(@PathVariable(name = "id") String doc_id){
+        return doctorInvitationService.addToInvitationList(doc_id);
     }
 
     @GetMapping({"/getInvitationDetails"})
     public List<Doctor_Invitation> getInvitationDetails(){
+
         return doctorInvitationService.getInvitationDetails();
     }
 
