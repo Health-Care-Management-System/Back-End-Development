@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Doctor {
 
     @Id
-    private String id;
+    private String doc_id;
 
     @Column(name = "First_Name")
     private String firstname;
@@ -40,8 +40,8 @@ public class Doctor {
 
 
 
-    public Doctor(String id, String firstname, String lastname, String dob, String address, String contactnumber, String emailID, String slmcnumber, String experience, byte[] image, String imageapi) {
-        this.id = id;
+    public Doctor(String doc_id, String firstname, String lastname, String dob, String address, String contactnumber, String emailID, String slmcnumber, String experience, byte[] image, String imageapi) {
+        this.doc_id = doc_id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.dob = dob;
@@ -60,11 +60,11 @@ public class Doctor {
     }
 
     public String getId() {
-        return id;
+        return doc_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String doc_id) {
+        this.doc_id = doc_id;
     }
 
     public String getFirstname() {

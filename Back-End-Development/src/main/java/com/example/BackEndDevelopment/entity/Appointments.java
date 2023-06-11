@@ -20,7 +20,7 @@ public class Appointments {
     private Patient patient_id;
 
     @ManyToOne
-    @JoinColumn(name="doctor_id",referencedColumnName = "id")
+    @JoinColumn(name="doctor_id",referencedColumnName = "doc_id")
     private Doctor doctor;
     private LocalDate data;
     private LocalTime time;

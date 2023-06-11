@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "pharmacy")
-public class Pharmacy {
+public class Pharmacy_ {
 
     @Id
     private String pharmacyid;
@@ -21,7 +21,7 @@ public class Pharmacy {
     private String street;
     private String district;
 
-    public Pharmacy(String pharmacyid, PharmacyOwner pharmacyOwner, String pharmacyname, String registrationnumber, String email, String phonenumber, String city, String street, String district) {
+    public Pharmacy_(String pharmacyid, PharmacyOwner pharmacyOwner, String pharmacyname, String registrationnumber, String email, String phonenumber, String city, String street, String district) {
         this.pharmacyid = pharmacyid;
         this.pharmacyOwner = pharmacyOwner;
         this.pharmacyname = pharmacyname;
@@ -33,7 +33,7 @@ public class Pharmacy {
         this.district = district;
     }
 
-    public Pharmacy() {
+    public Pharmacy_() {
 
     }
 
