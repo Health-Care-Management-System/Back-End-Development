@@ -3,8 +3,8 @@ package com.example.BackEndDevelopment.entity.pharmacy;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "pharmacy")
-public class Pharmacy_ {
+@Table(name = "PharmacyNew")
+public class PharmacyNew {
 
     @Id
     private String pharmacyid;
@@ -21,7 +21,7 @@ public class Pharmacy_ {
     private String street;
     private String district;
 
-    public Pharmacy_(String pharmacyid, PharmacyOwner pharmacyOwner, String pharmacyname, String registrationnumber, String email, String phonenumber, String city, String street, String district) {
+    public PharmacyNew(String pharmacyid, PharmacyOwner pharmacyOwner, String pharmacyname, String registrationnumber, String email, String phonenumber, String city, String street, String district) {
         this.pharmacyid = pharmacyid;
         this.pharmacyOwner = pharmacyOwner;
         this.pharmacyname = pharmacyname;
@@ -33,7 +33,7 @@ public class Pharmacy_ {
         this.district = district;
     }
 
-    public Pharmacy_() {
+    public PharmacyNew() {
 
     }
 

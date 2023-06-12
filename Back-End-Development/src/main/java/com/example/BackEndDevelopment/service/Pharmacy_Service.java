@@ -1,6 +1,6 @@
 package com.example.BackEndDevelopment.service;
 
-import com.example.BackEndDevelopment.entity.pharmacy.Pharmacy_;
+import com.example.BackEndDevelopment.entity.pharmacy.PharmacyNew;
 import com.example.BackEndDevelopment.exception.ResourceNotFoundException;
 import com.example.BackEndDevelopment.repository.Pharmacy_Repository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class Pharmacy_Service{
     @Autowired
     private Pharmacy_Repository pharmacy_repo;
 
-    public ResponseEntity<String> savePharmacy(Pharmacy_ pharmacy) {
+    public ResponseEntity<String> savePharmacy(PharmacyNew pharmacy) {
         try {
             this.pharmacy_repo.save(pharmacy);
             return ResponseEntity.ok("Successfully Added");
@@ -25,11 +25,11 @@ public class Pharmacy_Service{
         }
     }
 
-    public List<Pharmacy_> getAllPharmacy(){
+    public List<PharmacyNew> getAllPharmacy(){
         return pharmacy_repo.findAll();
     }
 
-    public Pharmacy_ getPharmacyById(String id) {
+    public PharmacyNew getPharmacyById(String id) {
         return pharmacy_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Not Found"));
     }
 
