@@ -20,9 +20,15 @@ public class searchservice {
         return searchrepo1.findAll();
     }
 
-    //    public searchdemo findById(Integer id){
-//        return searchrepo1.getById(id);
-//    }
+    public int getDoctorCount() {
+        Iterable<searchdemo> doctors = this.searchrepo1.findAll();
+        int count = 0;
+        for (searchdemo doctor : doctors) {
+            count++;
+        }
+        return count;
+    }
+
     public Optional<searchdemo> findById(Integer id){
         return searchrepo1.findById(id);
     }

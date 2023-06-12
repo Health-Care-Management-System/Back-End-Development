@@ -9,7 +9,6 @@ import java.util.Set;
 public class searchdemo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Integer id;
     @Column(unique = true)
     private String name;
@@ -19,25 +18,12 @@ public class searchdemo {
     private String hospital;
     private String spciality;
     private String empImage;
-
+    private String slmcnumber;
 
 
     public searchdemo() {
     }
-//    @ManyToMany(cascade=CascadeType.ALL)
-//    @JoinTable(name ="doctorhospital",
-//            joinColumns = {@JoinColumn(name="doctor_fk")},
-//            inverseJoinColumns = {@JoinColumn(name="hospital_fk")})
-//@ManyToMany(mappedBy = "searchdemos")
-//    private Set<Hospital> hospitals=new HashSet<>();
-//
-//    public Set<Hospital> getHospitals() {
-//        return hospitals;
-//    }
-//
-//    public void setHospitals(Set<Hospital> hospitals) {
-//        this.hospitals = hospitals;
-//    }
+
 
     public Integer getId() {
         return id;
@@ -101,5 +87,13 @@ public class searchdemo {
 
     public void setEmpImage(String empImage) {
         this.empImage = empImage;
+    }
+
+    public String getSlmcnumber() {
+        return slmcnumber;
+    }
+
+    public void setSlmcnumber(String slmcnumber) {
+        this.slmcnumber = slmcnumber;
     }
 }

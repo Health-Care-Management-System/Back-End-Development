@@ -30,10 +30,7 @@ public class HospitalController {
         return hospitalServices1.findAll ();
     }
 
-    //   @GetMapping("/find/{id}")
-//   public searchdemo findById(@PathVariable Integer id){
-//       return searchservice1.findById(id);
-//  }
+
     @GetMapping("/{id}")
     public ResponseEntity<Hospital> findById(@PathVariable Integer id) {
         Optional<Hospital> record = hospitalServices1.findById(id);
@@ -69,6 +66,15 @@ public class HospitalController {
         } else {
             return ResponseEntity.notFound().build();
         }
-    }}
+    }
+
+    @GetMapping("/getHospitalCount")
+    public int getHospitalCount(){
+        return this.hospitalServices1.getHospitalCount();
+    }
+
+
+
+}
 
 

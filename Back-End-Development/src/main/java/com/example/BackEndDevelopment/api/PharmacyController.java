@@ -14,6 +14,7 @@ import java.util.Optional;
 @RequestMapping("/apipharmacy")
 
 public class PharmacyController {
+
     @Autowired
     private PharmacyServices pharmacyservice1;
     @PostMapping("/add")
@@ -27,10 +28,6 @@ public class PharmacyController {
         return pharmacyservice1.findAll ();
     }
 
-    //   @GetMapping("/find/{id}")
-//   public searchdemo findById(@PathVariable Integer id){
-//       return searchservice1.findById(id);
-//  }
     @GetMapping("/{id}")
     public ResponseEntity<Pharmacy> findById(@  PathVariable Integer id) {
         Optional<Pharmacy> record = pharmacyservice1.findById(id);
@@ -71,6 +68,15 @@ public class PharmacyController {
         } else {
             return ResponseEntity.notFound().build();
         }
-    }}
+    }
+
+    @GetMapping("/getPharmacyCount")
+    public int getPharmacyCount(){
+        return this.pharmacyservice1.getPharmacyCount();
+    }
+
+}
+
+
 
 

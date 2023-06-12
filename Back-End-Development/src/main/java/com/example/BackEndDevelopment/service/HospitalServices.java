@@ -5,6 +5,7 @@ import com.example.BackEndDevelopment.repository.HospitalRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,9 +22,6 @@ public class HospitalServices {
         return hospitalrepo1.findAll();
     }
 
-    //    public searchdemo findById(Integer id){
-//        return searchrepo1.getById(id);
-//    }
     public Optional<Hospital> findById(Integer id){
         return hospitalrepo1.findById(id);
     }
@@ -46,6 +44,15 @@ public class HospitalServices {
     }
     public void delete(Hospital hospital){
         hospitalrepo1.delete(hospital);
+    }
+
+    public int getHospitalCount(){
+        int count = 0;
+        Iterable<Hospital> hospitals = this.hospitalrepo1.findAll();
+        for(Hospital hospital : hospitals){
+            count++;
+        }
+        return count;
     }
 
 }

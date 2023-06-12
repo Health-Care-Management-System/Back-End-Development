@@ -1,6 +1,7 @@
 package com.example.BackEndDevelopment.service;
 
 import com.example.BackEndDevelopment.entity.patient.Patient;
+import com.example.BackEndDevelopment.entity.pharmacy.Prescription;
 import com.example.BackEndDevelopment.exception.ResourceNotFoundException;
 import com.example.BackEndDevelopment.repository.Patient_Repository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class Patient_Service {
@@ -22,6 +24,16 @@ public class Patient_Service {
     public ResponseEntity<Patient> getPatientbyID(String id) {
         Patient patient = patient_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Patient Does Not Exist with id: " + id));
         return ResponseEntity.ok(patient);
+    }
+
+    public void deletePatientbyID(String id) {
+        Patient p = this.patient_repo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Not found user with id: "+id));
+        this.patient_repo.delete(p);
+    }
+
+    public List<Patient> getAllPatient() {
+        List<Patient> patient = patient_repo.findAll();
+        return patient;
     }
 
     public ResponseEntity<Patient> updateDoctorColumn(String id,String column,String data) {
@@ -70,6 +82,15 @@ public class Patient_Service {
         headers.setContentLength(image.length);
 
         return new ResponseEntity<>(image, headers, HttpStatus.OK);
+    }
+
+    public int getPatientCount(){
+        int count = 0;
+        List<Patient> patients = this.patient_repo.findAll();
+        for(Patient patient : patients){
+            count++;
+        }
+        return count;
     }
 
 }

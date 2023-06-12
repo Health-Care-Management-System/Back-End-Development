@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 
 @RestController
@@ -38,6 +39,21 @@ public class patientcontroller {
     @GetMapping("/patients/{id}/photo")
     public ResponseEntity<byte[]> getPatientPhoto(@PathVariable String id) {
         return patient_serv.getPatientPhoto(id);
+    }
+
+    @GetMapping("/patient/countAll")
+    public int getPatientCount(){
+        return this.patient_serv.getPatientCount();
+    }
+
+    @GetMapping("/patient/getAllPatient")
+    public List<Patient> getAllPatient(){
+        return this.patient_serv.getAllPatient();
+    }
+
+    @DeleteMapping("/patients/delete/{id}")
+    public void deleteById(@PathVariable String id){
+        this.patient_serv.deletePatientbyID(id);
     }
 
 }

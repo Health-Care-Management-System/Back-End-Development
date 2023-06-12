@@ -5,6 +5,7 @@ import com.example.BackEndDevelopment.repository.PharmacyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,9 +22,6 @@ public class PharmacyServices {
         return pharmacyrepo1.findAll();
     }
 
-    //    public searchdemo findById(Integer id){
-//        return searchrepo1.getById(id);
-//    }
     public Optional<Pharmacy> findById(Integer id){
         return pharmacyrepo1.findById(id);
     }
@@ -46,6 +44,15 @@ public class PharmacyServices {
     }
     public void delete(Pharmacy pharmacy){
         pharmacyrepo1.delete(pharmacy);
+    }
+
+    public int getPharmacyCount(){
+        int count = 0;
+        Iterable<Pharmacy> pharmacies = this.pharmacyrepo1.findAll();
+        for(Pharmacy pharmacy : pharmacies){
+            count++;
+        }
+        return count;
     }
 
 }
